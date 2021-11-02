@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.supkingx.dao.SmilerUserMapper">
+    <resultMap id="BaseResultMap" type="com.supkingx.pojo.SmilerUserPo">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="address" jdbcType="VARCHAR" property="address"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="gender" jdbcType="TINYINT" property="gender"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id
+        ,username,birthday,gender,address
+    </sql>
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"></include>
+        from smiler_user
+        where id = #{id}
+    </select>
+
+    <insert id="insertUser">
+        insert into smiler_user(id,username,birthday,gender,address)
+        VALUES
+        <foreach collection="list" item="user" separator="," open="(" close=")">
+            #{user.id},#{user.username},#{user.birthday},#{user.gender},#{user.address}
+        </foreach>
+    </insert>
+
+    <select id="queryPermissionById" resultMap="BaseResultMap">
+        select * from smiler_user s inner join user_permission u on s.id = u.user_id
+        where s.id = #{id}
+    </select>
+</mapper>
