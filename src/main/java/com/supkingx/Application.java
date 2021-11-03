@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @Author: wangchao
  * @Date: 2021/11/1
  */
-@MapperScan("com.supkingx.dao")
 @SpringBootApplication
+@MapperScan("com.supkingx.dao")
 public class Application {
     public static void main(final String[] args) {
         SpringApplication.run(Application.class, args);

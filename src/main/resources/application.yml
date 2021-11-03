@@ -1,0 +1,52 @@
+#server:
+#  port: 8777
+#
+#spring:
+#  shardingsphere:
+#    # 展示修改以后的sql语句
+#    props:
+#      sql-show: true
+#    datasource:
+#      names: ds0
+#      common:
+#        type: com.alibaba.druid.pool.DruidDataSource
+#      ds0:
+#        url: jdbc:mysql://localhost:3306/smiler_user?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
+#        username: root
+#        password: '123456'
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#    rules:
+#      sharding:
+#        # 分布式序列算法配置
+#        key-generators:
+#          # 此处必须要配置，否则会导致报错，因为shardingsphere-jdbc-core-spring-boot-starter需要加载此项配置，官网的demo例子有错
+#          snowflake:
+#            type: SNOWFLAKE
+#            props:
+#              worker-id: 123
+#
+#        # 配置分片算法
+#        sharding-algorithms:
+#          table-inline:
+#            type: INLINE
+#            props:
+#              algorithm-expression: user_info$->{id % 2}
+#        tables:
+#          user_info:
+#            # 配置user_info的分表的规则
+#            actual-data-nodes: ds0.user_info$->{0..1}
+#            # 单分片键的标准分片
+#            table-strategy:
+#              standard:
+#                sharding-column: id
+#                sharding-algorithm-name: table-inline
+#
+#            # 主键id生成策略（雪花算法）
+#            key-generate-strategy:
+#              key-generator-name: snowflake
+#              column: id
+#    enabled: true
+#
+#mybatis:
+#  typeAliasesPackage: com.nimo.shardingdemo.entity
+#  mapperLocations: classpath:mapper/*.xml

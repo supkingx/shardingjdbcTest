@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class SmilerUserPo {
+public class KingUserPo {
 
 
     private BigInteger id;
