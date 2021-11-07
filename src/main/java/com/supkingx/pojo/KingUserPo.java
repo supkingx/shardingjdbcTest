@@ -10,7 +10,7 @@ import java.util.Date;
 @Setter
 public class KingUserPo {
 
-
+ 
     private BigInteger id;
     private String username;
     private Date birthday;
