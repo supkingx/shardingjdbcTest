@@ -16,6 +16,6 @@ public class KingUserPo {
     private Date birthday;
     private Byte gender;
     private String address;
-
+ 
     private String permission;
 }
