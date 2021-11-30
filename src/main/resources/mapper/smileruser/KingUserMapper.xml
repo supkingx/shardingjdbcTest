@@ -4,14 +4,21 @@
 <mapper namespace="com.supkingx.dao.KingUserMapper">
     <resultMap id="BaseResultMap" type="com.supkingx.pojo.KingUserPo">
         <id column="id" jdbcType="BIGINT" property="id"/>
+        <id column="编号" jdbcType="BIGINT" property="编号"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="address" jdbcType="VARCHAR" property="address"/>
         <result column="username" jdbcType="VARCHAR" property="username"/>
         <result column="gender" jdbcType="TINYINT" property="gender"/>
     </resultMap>
     <select id="queryById" resultMap="BaseResultMap">
-        select id,username,birthday,gender,address
+        select id,id as '编号',username,birthday,gender,address
         from king_user
+        where id = #{id}
+    </select>
+
+    <select id="queryById2" resultMap="BaseResultMap">
+        select id,id as '编号',username,birthday,gender,address
+        from smiler_user
         where id = #{id}
     </select>
     

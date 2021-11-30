@@ -22,7 +22,7 @@ public class Demo01 {
     private KingUserMapper kingUserMapper;
     @Test
     public void test01(){
-        List<KingUserPo> kingUserPos = kingUserMapper.queryById(BigInteger.ONE);
+        List<KingUserPo> kingUserPos = kingUserMapper.queryById(new BigInteger("609934844402733056"));
         System.out.println("......");
     }
 }

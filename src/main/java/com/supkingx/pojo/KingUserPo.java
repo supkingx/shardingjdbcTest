@@ -12,6 +12,7 @@ public class KingUserPo {
 
  
     private BigInteger id;
+    private BigInteger 编号;
     private String username;
     private Date birthday;
     private Byte gender;

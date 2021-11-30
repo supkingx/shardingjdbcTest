@@ -23,8 +23,7 @@ public class TestController {
     private KingUserMapper userMapper;
 
     @GetMapping("/queryById")
-    public void queryById(){
-        List<KingUserPo> kingUserPos = userMapper.queryById(BigInteger.ONE);
-        System.out.println("......");
+    public List<KingUserPo> queryById(String id){
+        return userMapper.queryById2(new BigInteger(id));
     }
 }

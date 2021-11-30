@@ -13,4 +13,6 @@ import java.util.List;
  */
 public interface KingUserMapper {
     List<KingUserPo> queryById(BigInteger id);
+
+    List<KingUserPo> queryById2(BigInteger id);
 }
